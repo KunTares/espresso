@@ -634,6 +634,11 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
 
+  //float random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  float random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U00]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U00]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U00]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f));
+
+
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_U00]]);
          
   atomicadd( &ek_parameters_gpu.j[jindex_getByRhoLinear(index, EK_LINK_U00)],
@@ -684,6 +689,12 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
           ) * twoT_inv;
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
+
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0U0]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0U0]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0U0]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f));
+
          
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_0U0]]);
 
@@ -740,6 +751,12 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
 
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_00U]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_00U]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_00U]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f));
+
+
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_00U]]);
 
   atomicadd( &ek_parameters_gpu.j[jindex_getByRhoLinear(index, EK_LINK_00U)],
@@ -795,6 +812,12 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
           ) * twoT_inv;
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
+
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_UU0]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_UU0]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_UU0]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f) * sqrt(2.0f));
+
          
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_UU0]]);
 
@@ -833,6 +856,12 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
 
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_UD0]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_UD0]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_UD0]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f) * sqrt(2.0f));
+
+
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_UD0]]);
 
   atomicadd( &ek_parameters_gpu.j[jindex_getByRhoLinear(index, EK_LINK_UD0)],
@@ -870,6 +899,12 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
 
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U0U]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U0U]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U0U]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f) * sqrt(2.0f));
+
+
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_U0U]]);
 
   atomicadd( &ek_parameters_gpu.j[jindex_getByRhoLinear(index, EK_LINK_U0U)],
@@ -905,6 +940,12 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
           ) * twoT_inv;
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
+
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U0D]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U0D]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_U0D]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f) * sqrt(2.0f));
+
   
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_U0D]]);
 
@@ -943,6 +984,12 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
 
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0UU]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0UU]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0UU]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f) * sqrt(2.0f));
+
+
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_0UU]]);
 
   atomicadd( &ek_parameters_gpu.j[jindex_getByRhoLinear(index, EK_LINK_0UU)],
@@ -978,6 +1025,11 @@ __device__ void ek_diffusion_migration_lbforce_linkcentered_stencil(unsigned int
           ) * twoT_inv;
 
   flux *= ek_parameters_gpu.D[species_index] * agrid_inv / 3.0f;
+
+  //random = (curand_normal(&ek_parameters_gpu.rnd_state[index]));
+  random = 0.5f;
+  flux += ek_parameters_gpu.fluctuations * powf((ek_parameters_gpu.rho[species_index][index] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][index], 1.0f) * (ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0UD]] >= 0.0f) * min(ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0UD]], 1.0f) * (ek_parameters_gpu.rho[species_index][index]+ek_parameters_gpu.rho[species_index][neighborindex[EK_LINK_0UD]])/2.0f * 2.0f * ek_parameters_gpu.D[species_index] * agrid_inv * agrid_inv / ek_parameters_gpu.time_step, 0.5f) * random * ek_parameters_gpu.fluctuation_amplitude / (sqrt(3.0f) * sqrt(2.0f));
+
 
   flux *= !(lb_node.boundary[index] || lb_node.boundary[neighborindex[EK_LINK_0UD]]);
 
@@ -1696,9 +1748,9 @@ __global__ void ek_calculate_quantities( unsigned int species_index,
     if(ek_parameters_gpu.advection)
       ek_add_advection_to_flux(index, neighborindex, coord, species_index, node_f, lb_node, ek_lbparameters_gpu);
 
-    /* fluctuation contribution to flux */
+    /* fluctuation contribution to flux 
     if(ek_parameters_gpu.fluctuations)
-      ek_add_fluctuations_to_flux(index, species_index, neighborindex, lb_node);
+      ek_add_fluctuations_to_flux(index, species_index, neighborindex, lb_node);*/
   }
 }
 
